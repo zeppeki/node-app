@@ -2,14 +2,25 @@
 
 const express = require('express');
 const app = express();
-const ejs = require('ejs')
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use(express.static(__dirname + '/public'));
+
+
 app.get('/', function(req, res) {
     res.render('index', {title: 'メニュー'});
 });
+
+app.get('/page1', function(req, res) {
+    res.render('page1');
+});
+
+app.get('/page2', function(req, res) {
+    res.render('page2');
+});
+
 
 app.get('/html', function(req, res) {
     res.sendfile('./index.html');
